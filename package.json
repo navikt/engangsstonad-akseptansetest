@@ -1,0 +1,13 @@
+{
+  "name": "engangsstonad-akseptansetest",
+  "version": "1.0.0",
+  "description": "Ende til endetester for engangsstønad",
+  "scripts": {
+    "test": "$(npm bin)/testcafe firefox:headless tests/**/*.test.js"
+  },
+  "author": "Team Bris @ NAV",
+  "license": "MIT",
+  "devDependencies": {
+    "testcafe": "^0.21.1"
+  }
+}
