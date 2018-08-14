@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Ende til endetester for engangsstønad",
   "scripts": {
-    "test": "$(npm bin)/testcafe firefox:headless tests/**/*.test.js"
+    "test": "$(npm bin)/testcafe firefox:headless tests/**/*.test.js --proxy webproxy-internett.nav.no:8088"
   },
   "author": "Team Bris @ NAV",
   "license": "MIT",
