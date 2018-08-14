@@ -10,7 +10,10 @@ node {
     }
 
     stage('Setup') {
-       sh 'npm i'
+       withEnv(['HTTPS_PROXY=http://webproxy-internett.nav.no:8088']) {
+          sh 'npm i'
+       }
+
        withCredentials([file(credentialsId: 'engangsstonad_e2e_config', variable: 'TESTCONF')]) {
           sh 'cat $TESTCONF > config.js'
        }
@@ -18,7 +21,9 @@ node {
 
     stage('Tests') {
        try {
-          sh 'npm test'
+          withEnv(['HTTPS_PROXY=http://webproxy-internett.nav.no:8088']) {
+             sh 'npm test'
+          }
        } finally {
           sh 'rm config.js'
        }
