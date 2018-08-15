@@ -24,6 +24,15 @@ node {
           withEnv(['HTTPS_PROXY=http://webproxy-internett.nav.no:8088']) {
              sh 'npm test'
           }
+          slackSend([
+             color: 'good',
+             message: "Akseptansetestene for engangsstønad er OK"
+          ])
+       } catch (Exception ex) {
+          slackSend([
+             color: 'danger',
+             message: "Akseptansetesten(e) for engangsstønad feilet, sjekk status på $env.BUILD_URL"
+          ])
        } finally {
           sh 'rm config.js'
        }
