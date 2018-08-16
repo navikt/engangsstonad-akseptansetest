@@ -33,6 +33,7 @@ node {
              color: 'danger',
              message: "Akseptansetesten(e) for engangsstønad feilet, sjekk status på $env.BUILD_URL"
           ])
+          throw new Exception("Akseptansetesten(e) for engangsstønad feilet", ex)
        } finally {
           sh 'rm config.js'
        }
