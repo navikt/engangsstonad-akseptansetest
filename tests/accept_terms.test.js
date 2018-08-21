@@ -14,5 +14,5 @@ test('must be accepted', async t => {
    await t
       .navigateTo(config.url)
       .click(welcomePage.startButton)
-      .expect(welcomePage.errMsg.innerText).eql('Du må bekrefte at du har lest og forstått')
+      .expect(welcomePage.errMsg.innerText).contains('Du må bekrefte at du har lest og forstått')
 })

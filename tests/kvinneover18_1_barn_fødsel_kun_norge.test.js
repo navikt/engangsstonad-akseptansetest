@@ -19,7 +19,7 @@ const today = new Date()
 const tomorrow = new Date()
 tomorrow.setDate(tomorrow.getDate() + 1)
 
-fixture('Basic application')
+fixture('Engangsstønad application')
    .beforeEach(async t => {
       await t.useRole(loginPage.login(config.fnr_default))
    })
@@ -30,7 +30,7 @@ test('must be sent without errors', async t => {
       .click(welcomePage.forståttChecker)
       .click(welcomePage.startButton)
       .click(infoOmBarnetPage.fødselFramtid)
-      .click(infoOmBarnetPage.etBarn)
+      .click(infoOmBarnetPage.ettBarn)
       .typeText(infoOmBarnetPage.termindato, dateFormat(tomorrow, "dd.mm.yyyy"))
       .setFilesToUpload(infoOmBarnetPage.fileUpload, ['../upload.jpg'])
       .typeText(infoOmBarnetPage.terminbekreftelse, dateFormat(today, "dd.mm.yyyy"))
