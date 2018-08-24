@@ -11,6 +11,6 @@
     "testcafe": "^0.21.1"
   },
   "dependencies": {
-    "dateformat": "^3.0.3"
+    "moment": "^2.22.2"
   }
 }

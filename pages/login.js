@@ -27,7 +27,7 @@ export class LoginPage {
             .click(this.noButton)
             .typeText(this.fnrField, fnr)
             .click(this.signInButtonB2C)
-      }, { preserveUrl: true })
+      })
    }
 
 }
