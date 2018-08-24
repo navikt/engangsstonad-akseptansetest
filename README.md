@@ -9,11 +9,14 @@ For å kjøre testene:
 1. Lag en fil `config.js` (gjøres automatisk på CI-serveren, pass på å ikke sjekke den inn):
 ```javascript
 export const config = {
-   "login_url": "https://adresse/til/loginservice?redirect=........",
-   "url": "https://adresse/til/app",
-   "user": "brukeren",
-   "pass": "passordet",
-   "fnr_default": "12345678910"
+    "login_url": "https://adresse/til/loginservice?redirect=........",
+    "url": "https://adresse/til/app",
+    "user": "brukeren",
+    "pass": "passordet",
+    "fnr_default": "12345678910",
+    "fnr_under_18": "12345678911",
+    "fnr_ikkenordisk_eøs": "12345678912",
+    "fnr_mann_norsk": "12345678913"
 }
 ```
 2. `npm install`
