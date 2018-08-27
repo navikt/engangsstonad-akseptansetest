@@ -19,16 +19,17 @@ const moment = require('moment')
 const today = moment().format(dateFormat)
 const tomorrow = moment().add(1, 'days').format(dateFormat)
 
-fixture('Engangsstønad application')
+fixture('Woman older than 18 in Norway')
    .beforeEach(async t => {
       await t.useRole(loginPage.login(config.fnr_default))
    })
 
-test('must be sent without errors', async t => {
+test('can apply', async t => {
    await t
       .navigateTo(config.url)
       .click(welcomePage.forståttChecker)
       .click(welcomePage.startButton)
+
       .click(infoOmBarnetPage.fødselFramtid)
       .click(infoOmBarnetPage.ettBarn)
       .typeText(infoOmBarnetPage.termindato, tomorrow)
@@ -36,12 +37,15 @@ test('must be sent without errors', async t => {
       .typeText(infoOmBarnetPage.terminbekreftelse, today)
       .pressKey('tab')
       .click(infoOmBarnetPage.neste)
+
       .click(tilknytningTilNorgePage.siste12INorge)
       .click(tilknytningTilNorgePage.neste12INorge)
       .click(tilknytningTilNorgePage.iNorgeVedFødselFramtid)
       .click(tilknytningTilNorgePage.neste)
+
       .click(oppsummeringPage.bekreftRiktigeOpplysninger)
       .click(oppsummeringPage.sendInn)
+
       .expect(kvitteringPage.melding.innerText).contains('Takk for søknaden')
 })
 

@@ -18,12 +18,12 @@ const moment = require('moment')
 
 const yesterday = moment().subtract(1, 'days').format(dateFormat)
 
-fixture('Engangsstønad application')
+fixture('Woman with children already present in TPS')
    .beforeEach(async t => {
       await t.useRole(loginPage.login(config.fnr_barn_tps))
    })
 
-test('must be sent without errors', async t => {
+test('can apply', async t => {
    await t
       .navigateTo(config.url)
       .click(welcomePage.forståttChecker)

@@ -21,12 +21,12 @@ const tomorrow = moment().add(1, 'days').format(dateFormat)
 const sevenMonthsAgo = moment().subtract(7, 'months').format(dateFormat)
 const oneMonthAgo = moment().subtract(1, 'months').format(dateFormat)
 
-fixture('Engangsstønad application')
+fixture('Woman with previous stay in another country')
    .beforeEach(async t => {
       await t.useRole(loginPage.login(config.fnr_default))
    })
 
-test('must be sent without errors', async t => {
+test('can apply', async t => {
    await t
       .navigateTo(config.url)
       .click(welcomePage.forståttChecker)

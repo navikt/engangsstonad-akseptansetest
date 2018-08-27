@@ -23,12 +23,12 @@ const oneMonthAgo = moment().subtract(1, 'months').format(dateFormat)
 const oneMonthFromNow = moment().add(1, 'months').format(dateFormat)
 const fiveMonthsFromNow = moment().add(5, 'months').format(dateFormat)
 
-fixture('Engangsstønad application')
+fixture('Woman with past and future stays in another country')
    .beforeEach(async t => {
       await t.useRole(loginPage.login(config.fnr_default))
    })
 
-test('must be sent without errors', async t => {
+test('can apply', async t => {
    await t
       .navigateTo(config.url)
       .click(welcomePage.forståttChecker)

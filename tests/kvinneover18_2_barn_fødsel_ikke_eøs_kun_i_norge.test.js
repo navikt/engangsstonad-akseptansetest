@@ -21,12 +21,12 @@ const moment = require('moment')
 const today = moment().format(dateFormat)
 const tomorrow = moment().add(1, 'days').format(dateFormat)
 
-fixture('Engangsstønad application')
+fixture('Woman from Non-nordic EØS country')
    .beforeEach(async t => {
       await t.useRole(loginPage.login(config.fnr_ikkenordisk_eøs))
    })
 
-test('must be sent without errors', async t => {
+test('can apply', async t => {
    await t
       .navigateTo(config.url)
       .click(welcomePage.forståttChecker)
