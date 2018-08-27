@@ -8,7 +8,6 @@ node {
     }
 
     stage('Checkout') {
-        cleanWs()
         withCredentials([string(credentialsId: 'OAUTH_TOKEN', variable: 'token')]) {
            withEnv(['HTTPS_PROXY=http://webproxy-internett.nav.no:8088']) {
             sh 'git clone https://${token}:x-oauth-basic@github.com/navikt/engangsstonad-akseptansetest.git .'
