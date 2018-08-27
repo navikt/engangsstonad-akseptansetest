@@ -38,7 +38,7 @@ test('must be sent without errors', async t => {
       .click(infoOmBarnetPage.neste)
       .click(tilknytningTilNorgePage.siste12INorge)
       .click(tilknytningTilNorgePage.neste12INorge)
-      .click(tilknytningTilNorgePage.iNorgeVedFødsel)
+      .click(tilknytningTilNorgePage.iNorgeVedFødselFramtid)
       .click(tilknytningTilNorgePage.neste)
       .click(oppsummeringPage.bekreftRiktigeOpplysninger)
       .click(oppsummeringPage.sendInn)

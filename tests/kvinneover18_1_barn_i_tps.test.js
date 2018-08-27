@@ -16,14 +16,11 @@ const kvitteringPage = new KvitteringPage()
 const dateFormat = 'DD.MM.YYYY'
 const moment = require('moment')
 
-const today = moment().format(dateFormat)
-const tomorrow = moment().add(1, 'days').format(dateFormat)
-const sevenMonthsAgo = moment().subtract(7, 'months').format(dateFormat)
-const oneMonthAgo = moment().subtract(1, 'months').format(dateFormat)
+const yesterday = moment().subtract(1, 'days').format(dateFormat)
 
 fixture('Engangsstønad application')
    .beforeEach(async t => {
-      await t.useRole(loginPage.login(config.fnr_default))
+      await t.useRole(loginPage.login(config.fnr_barn_tps))
    })
 
 test('must be sent without errors', async t => {
@@ -31,27 +28,21 @@ test('must be sent without errors', async t => {
       .navigateTo(config.url)
       .click(welcomePage.forståttChecker)
       .click(welcomePage.startButton)
-      .click(infoOmBarnetPage.fødselFramtid)
+
+      .click(infoOmBarnetPage.fødselFortid)
       .click(infoOmBarnetPage.ettBarn)
-      .typeText(infoOmBarnetPage.termindato, tomorrow)
-      .setFilesToUpload(infoOmBarnetPage.fileUpload, ['../upload.jpg'])
-      .typeText(infoOmBarnetPage.terminbekreftelse, today)
+      .typeText(infoOmBarnetPage.fødselsdato, yesterday)
       .pressKey('tab')
       .click(infoOmBarnetPage.neste)
 
-      .click(tilknytningTilNorgePage.siste12IUtlandet)
-      .click(tilknytningTilNorgePage.leggTilLand)
-      .click(tilknytningTilNorgePage.velgLand)
-      .click(tilknytningTilNorgePage.velgLand.find('option').withText('Belgia'))
-      .typeText(tilknytningTilNorgePage.boILandFraDato, sevenMonthsAgo)
-      .typeText(tilknytningTilNorgePage.boILandTilDato, oneMonthAgo)
-      .click(tilknytningTilNorgePage.leggTilLandIDialog)
+      .click(tilknytningTilNorgePage.siste12INorge)
       .click(tilknytningTilNorgePage.neste12INorge)
-      .click(tilknytningTilNorgePage.iNorgeVedFødselFramtid)
+      .click(tilknytningTilNorgePage.iNorgeVedFødselFortid)
       .click(tilknytningTilNorgePage.neste)
 
       .click(oppsummeringPage.bekreftRiktigeOpplysninger)
       .click(oppsummeringPage.sendInn)
+
       .expect(kvitteringPage.melding.innerText).contains('Takk for søknaden')
 })
 
