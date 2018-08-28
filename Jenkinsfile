@@ -2,6 +2,7 @@ node {
 
    stage('Prepare') {
         cleanWs()
+        sh 'pkill firefox'
         sh 'rm -f ~/.mozilla/firefox/*.default/cookies.sqlite'
         sh 'rm -f ~/.mozilla/firefox/*.default/*.sqlite ~/.mozilla/firefox/*default/sessionstore.js'
         sh 'rm -rf ~/.cache/mozilla/firefox/*.default/*'
