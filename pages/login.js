@@ -4,14 +4,14 @@ import { config } from '../config'
 export class LoginPage {
 
    constructor() {
-      this.utenIdPortenButton = Selector('#StubExchange')
-      this.usernameField = Selector('#i0116')
-      this.passwordField = Selector('#i0118')
-      this.nextButton = Selector('#idSIButton9')
-      this.signInButtonAzure = Selector('#idSIButton9')
-      this.dontShowAgainChecker = Selector('#KmsiCheckboxField')
-      this.noButton = Selector('#idBtn_Back')
-      this.fnrField = Selector('div.login-card:nth-child(1) > form:nth-child(3) > input:nth-child(2)')
+      this.utenIdPortenButton = Selector('#StubExchange');
+      this.usernameField = Selector('#i0116');
+      this.passwordField = Selector('#i0118');
+      this.nextButton = Selector('#idSIButton9');
+      this.signInButtonAzure = Selector('#idSIButton9');
+      this.dontShowAgainChecker = Selector('#KmsiCheckboxField');
+      this.noButton = Selector('#idBtn_Back');
+      this.fnrField = Selector('input[name="login"]');
       this.signInButtonB2C = Selector('.login')
    }
 
