@@ -32,7 +32,7 @@ node {
           }
           slackSend([
              color: 'good',
-             message: "Akseptansetestene for engangsstønad er OK"
+             message: "Akseptansetestene for engangsstønad er OK :tada:"
           ])
        } catch (Exception ex) {
           slackSend([
