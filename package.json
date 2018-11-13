@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "Ende til endetester for engangsstønad",
   "scripts": {
-    "test": "$(npm bin)/testcafe -e -S -s . firefox:headless tests/**/*.test.js --proxy webproxy-internett.nav.no:8088 --selector-timeout 15000 --assertion-timeout 15000 --page-load-timeout 15000"
+    "test": "$(npm bin)/testcafe --sf -e -S -s . firefox:headless tests/**/*.test.js --proxy webproxy-internett.nav.no:8088 --selector-timeout 15000 --assertion-timeout 15000 --page-load-timeout 15000",
+    "testWithoutProxy": "$(npm bin)/testcafe --sf -e -S -s . firefox:headless tests/**/*.test.js --selector-timeout 15000 --assertion-timeout 15000 --page-load-timeout 15000",
+    "testHeadWithoutProxy": "$(npm bin)/testcafe --sf -e -S -s . firefox tests/**/*.test.js --selector-timeout 15000 --assertion-timeout 15000 --page-load-timeout 15000"
   },
   "author": "Team Bris @ NAV",
   "license": "MIT",
   "devDependencies": {
-    "testcafe": "^0.22.0"
+    "testcafe": "^0.23.0"
   },
   "dependencies": {
     "moment": "^2.22.2"
