@@ -1,5 +1,15 @@
-import { Role, Selector } from 'testcafe'
+import {ClientFunction, Role, Selector} from 'testcafe'
 import { config } from '../config'
+
+export const waitForIDPortenOptionPage = ClientFunction(() => {
+   return new Promise(resolve => {
+      window.setInterval(() => {
+         if (document.location.href.indexOf('login.microsoftonline.com') >= 0) {
+            resolve();
+         }
+      }, 100);
+   });
+});
 
 export class LoginPage {
 
@@ -17,6 +27,7 @@ export class LoginPage {
 
    login = (fnr) => {
       return Role(config.login_url, async t => {
+         waitForIDPortenOptionPage();
          await t
             .click(this.utenIdPortenButton)
             .typeText(this.usernameField, config.user)
