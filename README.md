@@ -9,7 +9,6 @@ For å kjøre testene:
 1. Lag en fil `config.js` (gjøres automatisk på CI-serveren, pass på å ikke sjekke den inn):
 ```javascript
 export const config = {
-    "login_url": "https://adresse/til/loginservice?redirect=........",
     "url": "https://adresse/til/app",
     "user": "brukeren",
     "pass": "passordet",
