@@ -35,7 +35,7 @@ node {
        } catch (Exception ex) {
           slackSend([
              color: 'danger',
-             message: "Akseptansetesten(e) for engangsstønad feilet, sjekk status på $env.BUILD_URL"
+             message: "Akseptansetesten(e) for engangsstønad feilet :thumbsdown: \nSjekk status på $env.BUILD_URL :poop:"
           ])
           throw new Exception("Akseptansetesten(e) for engangsstønad feilet", ex)
        } finally {
