@@ -7,9 +7,6 @@ export class TilknytningTilNorgePage {
       this.siste12IUtlandet = Selector('span.inputPanel__label').withText('bodd i utlandet helt eller delvis');
       this.neste12INorge = Selector('span.inputPanel__label').withText('kun bo i Norge');
       this.neste12IUtlandet = Selector('span.inputPanel__label').withText('bo i utlandet helt eller delvis');
-      this.iNorgeVedFødselFramtid = Selector('span.inputPanel__label').withText('være i Norge');
-      this.iNorgeVedFødselFortid = Selector('div.formblock__collapse:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > fieldset:nth-child(1) > div:nth-child(2) > div:nth-child(1) > label:nth-child(1)')
-      this.iUtlandetVedFødsel = Selector('div.formblock__collapse:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > fieldset:nth-child(1) > div:nth-child(2) > div:nth-child(2) > label:nth-child(1)')
       this.leggTilLand = Selector('button.knapp:nth-child(2)')
       this.leggTilLandIDialog = Selector('body.ReactModal__Body--open div.ReactModalPortal div.ReactModal__Overlay.ReactModal__Overlay--after-open.modal__overlay div.ReactModal__Content.ReactModal__Content--after-open.modal.countryModal section form div.formblock.formblock--xxs div.countryModal__buttonBar button.knapp.knapp--hoved')
       this.boILandFraDato = Selector('#boddFraDato');

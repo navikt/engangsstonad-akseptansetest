@@ -40,7 +40,6 @@ test('can apply', async t => {
 
       .click(tilknytningTilNorgePage.siste12INorge)
       .click(tilknytningTilNorgePage.neste12INorge)
-      .click(tilknytningTilNorgePage.iNorgeVedFødselFramtid)
       .click(tilknytningTilNorgePage.neste)
 
       .click(oppsummeringPage.bekreftRiktigeOpplysninger)

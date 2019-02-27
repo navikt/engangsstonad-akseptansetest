@@ -47,7 +47,6 @@ test('can apply', async t => {
       .typeText(tilknytningTilNorgePage.boILandTilDato, oneMonthAgo)
       .click(tilknytningTilNorgePage.leggTilLandIDialog)
       .click(tilknytningTilNorgePage.neste12INorge)
-      .click(tilknytningTilNorgePage.iNorgeVedFødselFramtid)
       .click(tilknytningTilNorgePage.neste)
 
       .click(oppsummeringPage.bekreftRiktigeOpplysninger)
