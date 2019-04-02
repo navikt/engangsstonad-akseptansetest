@@ -1,13 +1,21 @@
-import { config } from '../config'
-import { LoginPage } from '../pages/login'
-import { WelcomePage } from '../pages/welcome'
+import {
+   config
+} from '../config'
+import {
+   LoginPage
+} from '../pages/login'
+import {
+   WelcomePage
+} from '../pages/welcome'
+import {
+   startAndResetSøknad
+} from '../tests/utils';
 
-const loginPage = new LoginPage();
 const welcomePage = new WelcomePage();
 
 fixture('Men')
    .beforeEach(async t => {
-      await t.useRole(loginPage.login(config.fnr_mann))
+      await startAndResetSøknad(t, 0, config.fnr_mann);
    });
 
 test('cannot apply', async t => {
