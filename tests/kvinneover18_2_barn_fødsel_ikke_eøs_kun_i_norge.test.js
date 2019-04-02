@@ -1,13 +1,31 @@
-import { config } from '../config'
-import { LoginPage } from '../pages/login'
-import { WelcomePage } from '../pages/welcome'
-import { InfoOmBarnPage } from '../pages/info-om-barn'
-import { TilknytningTilNorgePage } from '../pages/tilknytning-til-norge'
-import { OppsummeringPage } from '../pages/oppsummering'
-import { KvitteringPage } from '../pages/kvittering'
-import { AnnenForelderPage } from '../pages/info-om-annen-forelder'
+import {
+   config
+} from '../config'
+import {
+   LoginPage
+} from '../pages/login'
+import {
+   WelcomePage
+} from '../pages/welcome'
+import {
+   InfoOmBarnPage
+} from '../pages/info-om-barn'
+import {
+   TilknytningTilNorgePage
+} from '../pages/tilknytning-til-norge'
+import {
+   OppsummeringPage
+} from '../pages/oppsummering'
+import {
+   KvitteringPage
+} from '../pages/kvittering'
+import {
+   AnnenForelderPage
+} from '../pages/info-om-annen-forelder'
+import {
+   startAndResetSøknad
+} from '../tests/utils';
 
-const loginPage = new LoginPage();
 const welcomePage = new WelcomePage();
 const infoOmBarnetPage = new InfoOmBarnPage();
 const tilknytningTilNorgePage = new TilknytningTilNorgePage();
@@ -23,7 +41,7 @@ const tomorrow = moment().add(1, 'days').format(dateFormat);
 
 fixture('Woman from Non-nordic EØS country')
    .beforeEach(async t => {
-      await t.useRole(loginPage.login(config.fnr_ikkenordisk_eøs))
+      await startAndResetSøknad(t, 0, config.fnr_ikkenordisk_eøs);
    });
 
 test('can apply', async t => {
@@ -52,4 +70,3 @@ test('can apply', async t => {
       .click(oppsummeringPage.sendInn)
       .expect(kvitteringPage.melding.innerText).contains('Takk for søknaden')
 });
-

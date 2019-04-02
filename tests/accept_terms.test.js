@@ -1,13 +1,22 @@
-import { config } from '../config'
-import { LoginPage } from '../pages/login'
-import { WelcomePage } from '../pages/welcome'
+import {
+   config
+} from '../config'
+import {
+   LoginPage
+} from '../pages/login'
+import {
+   WelcomePage
+} from '../pages/welcome'
 
-const loginPage = new LoginPage();
+import {
+   startAndResetSøknad
+} from '../tests/utils';
+
 const welcomePage = new WelcomePage();
 
 fixture('Terms and conditions')
    .beforeEach(async t => {
-      await t.useRole(loginPage.login(config.fnr_default))
+      await startAndResetSøknad(t, 0, config.fnr_default);
    });
 
 test('must be accepted', async t => {
