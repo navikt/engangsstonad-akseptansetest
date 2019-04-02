@@ -1,12 +1,28 @@
-import { config } from '../config'
-import { LoginPage } from '../pages/login'
-import { WelcomePage } from '../pages/welcome'
-import { InfoOmBarnPage } from '../pages/info-om-barn'
-import { TilknytningTilNorgePage } from '../pages/tilknytning-til-norge'
-import { OppsummeringPage } from '../pages/oppsummering'
-import { KvitteringPage } from '../pages/kvittering'
+import {
+   config
+} from '../config'
+import {
+   LoginPage
+} from '../pages/login'
+import {
+   WelcomePage
+} from '../pages/welcome'
+import {
+   InfoOmBarnPage
+} from '../pages/info-om-barn'
+import {
+   TilknytningTilNorgePage
+} from '../pages/tilknytning-til-norge'
+import {
+   OppsummeringPage
+} from '../pages/oppsummering'
+import {
+   KvitteringPage
+} from '../pages/kvittering'
+import {
+   startAndResetSøknad
+} from '../tests/utils';
 
-const loginPage = new LoginPage();
 const welcomePage = new WelcomePage();
 const infoOmBarnetPage = new InfoOmBarnPage();
 const tilknytningTilNorgePage = new TilknytningTilNorgePage();
@@ -21,7 +37,7 @@ const tomorrow = moment().add(1, 'days').format(dateFormat);
 
 fixture('Woman older than 18 in Norway')
    .beforeEach(async t => {
-      await t.useRole(loginPage.login(config.fnr_default))
+      await startAndResetSøknad(t, 0, config.fnr_default);
    });
 
 test('can apply', async t => {
@@ -47,4 +63,3 @@ test('can apply', async t => {
 
       .expect(kvitteringPage.melding.innerText).contains('Takk for søknaden')
 });
-
