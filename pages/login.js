@@ -45,6 +45,7 @@ export class LoginPage {
       return Role(config.url, async t => {
          waitForIDPortenOptionPage();
          await t.click(this.utenIdPortenButton);
+         await this.fillOutLoginForm(t);
          if (await this.fnrField.exists) {
             await t.typeText(this.fnrField, fnr)
          } else if (await this.usernameField.exists) {
