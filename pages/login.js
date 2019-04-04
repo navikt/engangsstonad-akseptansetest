@@ -1,5 +1,11 @@
-import {ClientFunction, Role, Selector} from 'testcafe'
-import { config } from '../config'
+import {
+   ClientFunction,
+   Role,
+   Selector
+} from 'testcafe'
+import {
+   config
+} from '../config'
 
 export const waitForIDPortenOptionPage = ClientFunction(() => {
    return new Promise(resolve => {
@@ -25,19 +31,28 @@ export class LoginPage {
       this.signInButtonB2C = Selector('.login')
    }
 
+   fillOutLoginForm = (t) => {
+      return t.typeText(this.usernameField, config.user)
+         .click(this.nextButton)
+         .typeText(this.passwordField, config.pass)
+         .click(this.signInButtonAzure)
+         .click(this.dontShowAgainChecker)
+         .click(this.noButton);
+
+   }
+
    login = (fnr) => {
       return Role(config.url, async t => {
          waitForIDPortenOptionPage();
-         await t
-            .click(this.utenIdPortenButton)
-            .typeText(this.usernameField, config.user)
-            .click(this.nextButton)
-            .typeText(this.passwordField, config.pass)
-            .click(this.signInButtonAzure)
-            .click(this.dontShowAgainChecker)
-            .click(this.noButton)
-            .typeText(this.fnrField, fnr)
-            .click(this.signInButtonB2C)
+         await t.click(this.utenIdPortenButton);
+         await this.fillOutLoginForm(t);
+         if (await this.fnrField.exists) {
+            await t.typeText(this.fnrField, fnr)
+         } else if (await this.usernameField.exists) {
+            await this.fillOutLoginForm(t);
+            await t.typeText(this.fnrField, fnr)
+         }
+         await t.click(this.signInButtonB2C)
       })
    }
 
