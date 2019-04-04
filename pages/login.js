@@ -48,6 +48,9 @@ export class LoginPage {
          await this.fillOutLoginForm(t);
          if (await this.fnrField.exists) {
             await t.typeText(this.fnrField, fnr)
+         } else if (await this.noButton.exists) {
+            await t.click(this.noButton);
+            await t.typeText(this.fnrField, fnr)
          } else if (await this.usernameField.exists) {
             await this.fillOutLoginForm(t);
             await t.typeText(this.fnrField, fnr)
